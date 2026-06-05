@@ -1,8 +1,9 @@
-import React from "react";
+import React from "react"
 import "./App.css";
 import LoginPage from "./pages/loginpage";
+import SignupPage from "./Registration";
 
-function App() {
+function App(){
   return (
     <>
      <LoginPage />
@@ -10,5 +11,3 @@ function App() {
     </>
   );
 }
-
-export default App;
