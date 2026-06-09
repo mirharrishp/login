@@ -1,21 +1,21 @@
-/* loginpage.css */
+/* Registration.css */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
-.login-container {
+.registration-container {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2rem;
   background: radial-gradient(circle at 10% 20%, rgba(170, 59, 255, 0.15) 0%, transparent 40%),
-              radial-gradient(circle at 90% 80%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
-              var(--bg);
+    radial-gradient(circle at 90% 80%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
+    var(--bg);
   font-family: 'Outfit', sans-serif;
   transition: background 0.3s ease;
   box-sizing: border-box;
 }
 
-.login-card {
+.registration-card {
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -24,8 +24,8 @@
   padding: 3rem 2.5rem;
   width: 100%;
   max-width: 440px;
-  box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.08), 
-              0 0 0 1px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.02);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,17 +34,17 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .login-container {
+  .registration-container {
     background: radial-gradient(circle at 10% 20%, rgba(192, 132, 252, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
-                var(--bg);
+      radial-gradient(circle at 90% 80%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+      var(--bg);
   }
 
-  .login-card {
+  .registration-card {
     background: rgba(30, 41, 59, 0.45);
     border: 1px solid rgba(255, 255, 255, 0.06);
     box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.3),
-                0 0 0 1px rgba(255, 255, 255, 0.02);
+      0 0 0 1px rgba(255, 255, 255, 0.02);
   }
 }
 
@@ -53,13 +53,14 @@
     opacity: 0;
     transform: translateY(30px) scale(0.98);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
 
-.login-logo {
+.registration-logo {
   width: 64px;
   height: 64px;
   border-radius: 16px;
@@ -72,17 +73,17 @@
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.login-logo:hover {
+.registration-logo:hover {
   transform: rotate(10deg) scale(1.08);
 }
 
-.login-logo img {
+.registration-logo img {
   width: 34px;
   height: 34px;
   object-fit: contain;
 }
 
-.login-card h2 {
+.registration-card h2 {
   font-size: 2.25rem;
   font-weight: 700;
   color: var(--text-h);
@@ -94,7 +95,7 @@
   text-align: center;
 }
 
-.login-subtitle {
+.registration-subtitle {
   font-size: 0.95rem;
   color: var(--text);
   margin-bottom: 2rem;
@@ -102,110 +103,51 @@
   line-height: 1.4;
 }
 
-.login-form {
+.registration-form {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
 }
 
-.login-input-group {
-  position: relative;
-  display: flex;
-  align-items: center;
+.registration-input {
   width: 100%;
   background: rgba(255, 255, 255, 0.45);
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 14px;
+  padding: 0.95rem 1.25rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--text-h);
+  outline: none;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   box-sizing: border-box;
 }
 
 @media (prefers-color-scheme: dark) {
-  .login-input-group {
+  .registration-input {
     background: rgba(15, 23, 42, 0.35);
     border: 1px solid rgba(255, 255, 255, 0.08);
   }
 }
 
-.login-input-icon {
-  width: 20px;
-  height: 20px;
-  margin-left: 1.25rem;
-  opacity: 0.5;
-  transition: opacity 0.25s ease;
+.registration-input::placeholder {
+  color: var(--text);
+  opacity: 0.6;
 }
 
-/* Make icons match dark mode */
-@media (prefers-color-scheme: dark) {
-  .login-input-icon {
-    filter: invert(1) brightness(1.5);
-  }
-}
-
-.login-input {
-  width: 100%;
-  background: transparent;
-  border: none;
-  padding: 0.95rem 1.25rem 0.95rem 0.75rem;
-  font-size: 0.95rem;
-  font-family: inherit;
-  color: var(--text-h);
-  outline: none;
-  box-sizing: border-box;
-}
-
-.login-input-group:hover {
+.registration-input:hover {
   border-color: rgba(170, 59, 255, 0.3);
 }
 
-.login-input-group:focus-within {
+.registration-input:focus {
   background: var(--bg);
   border-color: var(--accent);
-  box-shadow: 0 0 0 4px var(--accent-bg), 
-              0 4px 12px -2px rgba(170, 59, 255, 0.1);
+  box-shadow: 0 0 0 4px var(--accent-bg),
+    0 4px 12px -2px rgba(170, 59, 255, 0.1);
 }
 
-.login-input-group:focus-within .login-input-icon {
-  opacity: 0.9;
-}
-
-.login-options {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.88rem;
-  color: var(--text);
-  margin-top: -0.25rem;
-  margin-bottom: 0.5rem;
-}
-
-.login-remember {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  user-select: none;
-}
-
-.login-remember input {
-  accent-color: var(--accent);
-  cursor: pointer;
-}
-
-.login-forgot {
-  color: var(--accent);
-  font-weight: 500;
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-.login-forgot:hover {
-  color: #6366f1;
-  text-decoration: underline;
-}
-
-.login-submit-btn {
+.registration-submit-btn {
   width: 100%;
   padding: 1rem;
   border-radius: 14px;
@@ -217,21 +159,33 @@
   cursor: pointer;
   box-shadow: 0 8px 20px -6px rgba(170, 59, 255, 0.35);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 0.5rem;
   letter-spacing: 0.5px;
 }
 
-.login-submit-btn:hover {
+.registration-submit-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 24px -5px rgba(170, 59, 255, 0.45);
   filter: brightness(1.05);
 }
 
-.login-submit-btn:active {
+.registration-submit-btn:active {
   transform: translateY(0);
   box-shadow: 0 6px 14px -5px rgba(170, 59, 255, 0.35);
 }
 
-.login-register-btn {
+@media (max-width: 480px) {
+  .registration-card {
+    padding: 2.5rem 1.5rem;
+    border-radius: 20px;
+  }
+
+  .registration-card h2 {
+    font-size: 1.85rem;
+  }
+}
+
+.registration-login-btn {
   width: 100%;
   padding: 1rem;
   border-radius: 14px;
@@ -245,26 +199,15 @@
   letter-spacing: 0.5px;
 }
 
-.login-register-btn:hover {
+.registration-login-btn:hover {
   background: var(--accent-bg);
   border-color: var(--accent);
   transform: translateY(-2px);
   box-shadow: 0 8px 20px -6px rgba(170, 59, 255, 0.25);
 }
 
-.login-register-btn:active {
+.registration-login-btn:active {
   transform: translateY(0);
-}
-
-@media (max-width: 480px) {
-  .login-card {
-    padding: 2.5rem 1.5rem;
-    border-radius: 20px;
-  }
-  
-  .login-card h2 {
-    font-size: 1.85rem;
-  }
 }
 
 .alert-error {

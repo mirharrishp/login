@@ -1,46 +1,112 @@
-import react from 'react'
-import './loginpage.css'
-import email from '../assets/email.png'
-import imgicon from '../assets/imgicon.png'
+import React, { useState } from 'react';
+import axios from 'axios';
+import './loginpage.css';
+import emailIcon from '../assets/email.png';
+import passIcon from '../assets/passic.png';
+import logoImg from '../assets/vite.svg';
 
-import passic from '../assets/passic.png'
+const LoginPage = ({ onNavigate }) => {
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-const LoginPage = () => {
-    return (<>
-        <div className="container" >
-            <div className="header">
-            <div className='text'>signup</div>
-            <div className='underline'></div>
-            </div>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setSuccess("");
 
-    
-        <div className='inputs'>
-        
-        <div className="input">
-        <img src={imgicon} alt=''></img>
-        <input type='text'placeholder='name' />
+    try {
+      const response = await axios.post(
+        "http://localhost:8888/api/users/login.php",
+        form
+      );
+
+      if (response.data && response.data.status === true) {
+        setSuccess("Login successful! Redirecting...");
+        setTimeout(() => {
+          if (onNavigate) {
+            onNavigate("form");
+          }
+        }, 1200);
+      } else {
+        setError(response.data.message || "Invalid email or password.");
+      }
+    } catch (err) {
+      console.error(err);
+      setError("Failed to connect to server. Please try again later.");
+    }
+  };
+
+  return (
+    <div className="login-container">
+      <div className="login-card">
+        <div className="login-logo">
+          <img src={logoImg} alt="Logo" />
         </div>
-        
-        <div className="input">
-        <img src={email} alt=''></img>
-        <input type="email" placeholder='email' />
-        </div>
-        
-        <div className="input">
-        <img src={passic} alt=''></img>
-        <input type='password' placeholder='password'/>
-        </div>
-        <div className="forgot-password">lost password <span>click here</span></div>
-        <div className="submit-container" >
-            <div className="submit" > sign up</div>
-            <div className="submit" > Login</div>
-        </div>    
+
+        <h2>Welcome Back</h2>
+        <p className="login-subtitle">Sign in to continue to your account</p>
+
+        {error && <div className="alert-error">{error}</div>}
+        {success && <div className="alert-success">{success}</div>}
+
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="login-input-group">
+            <img src={emailIcon} alt="Email" className="login-input-icon" />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              value={form.email}
+              onChange={handleChange}
+              className="login-input"
+              required
+            />
+          </div>
+
+          <div className="login-input-group">
+            <img src={passIcon} alt="Password" className="login-input-icon" />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={form.password}
+              onChange={handleChange}
+              className="login-input"
+              required
+            />
+          </div>
+
+          <div className="login-options">
+            <label className="login-remember">
+              <input type="checkbox" /> Remember me
+            </label>
+            <span className="login-forgot">Forgot password?</span>
+          </div>
+
+          <button type="submit" className="login-submit-btn">LOGIN</button>
+          
+          <button
+            type="button"
+            className="login-register-btn"
+            onClick={() => onNavigate && onNavigate("signup")}
+          >
+            Don't have an account? Register
+          </button>
+        </form>
+      </div>
     </div>
-</div>
+  );
+};
 
-
-    </>
-    )
-}
-export default LoginPage
+export default LoginPage;

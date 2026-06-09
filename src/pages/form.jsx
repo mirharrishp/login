@@ -1,11 +1,20 @@
 import React from "react";
 import "./form.css";
 
-function App() {
+function App({ onNavigate }) {
   return (
     <div className="container">
       <div className="form-box">
-        <h2>Employee Details Form</h2>
+        <div className="form-header">
+          <h2>Employee Details Form</h2>
+          <button 
+            type="button" 
+            className="form-logout-btn" 
+            onClick={() => onNavigate && onNavigate("login")}
+          >
+            Logout
+          </button>
+        </div>
 
         <form>
           <div className="form-group">
